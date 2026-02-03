@@ -265,16 +265,26 @@ function calculateResult() {
     }
 }
 
-function isPrime(num) {
-    if (num <= 1) return false;
-    if (num <= 3) return true;
-    if (num % 2 === 0 || num % 3 === 0) return false;
-    
-    for (let i = 5; i * i <= num; i += 6) {
-        if (num % i === 0 || num % (i + 2) === 0) return false;
+function applyLogarithm() {
+  if (left.length === 0) return;
+
+  const num = parseFloat(left);
+  if (num <= 0) {
+    left = "Error";
+  } else {
+    const result = Math.log10(num);
+    if (steps.length < MAX_STEPS) {
+      steps.push(`Step ${steps.length + 1}: log10(${num}) = ${result}`);
     }
-    return true;
+    left = result.toString();
+  }
+
+  right = "";
+  operator = "";
+  updateStepsDisplay();
+  updateResult();
 }
+
 
 function checkPrime() {
     const num = parseFloat(currentExpression);
