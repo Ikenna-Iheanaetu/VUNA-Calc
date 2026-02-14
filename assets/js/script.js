@@ -1732,3 +1732,14 @@ function updateGeometryInputs() {
     input2.style.display = "block";
   }
 }
+
+function cubeRootResult() {
+    if (currentExpression.length === 0) return;
+    const num = parseFloat(currentExpression);
+    const cbrt = num < 0 ? -Math.pow(Math.abs(num), 1/3) : Math.pow(num, 1/3);
+    currentExpression = cbrt.toString();
+    operator = '';
+    right = '';
+    updateResult();
+
+}
